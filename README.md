@@ -1,9 +1,9 @@
-ECU178-E3- Luke Smy, 
-==========
-Project 3 
+ECU178-E3- Smy Luke, PANCEROV Vladislav, NTEMFAC OFEGE George Nketi, NIKOLOV, Nikola Petkov, YUSUF Mohammad
+=================================================================================================================
+Project 3 - Virtual Robot Treasure Hunt: Part 2
 
 CONTENTS OF THIS FILE
----------------------
+-----------------------------------------------------------------------------------------------------------------
  * Introduction
       
  * Installation/Requirements
