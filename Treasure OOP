@@ -1,0 +1,22 @@
+import time
+import random
+
+from Tkinter import*
+
+
+#creating classes of lanmarks
+class LandImage:
+    def __init__(self, x, y, image, anchor=NW):
+        self.x=x
+        self.y=y
+        self.image=image
+    def createImage(self, canvas):
+        self.canvas = canvas
+        self.image=PhotoImage(file=self.image)
+        self.gif=canvas.create_image(self.x, self.y, image=self.image)
+#setting tkinter window        
+window=Tk()
+canvas=Canvas(window, width=800, height=600, bg='white')
+canvas.pack(padx=5,pady=5)
+
+
