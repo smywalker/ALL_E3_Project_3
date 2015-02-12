@@ -1,0 +1,61 @@
+from Tkinter import *
+from math import *
+from time import sleep
+from random import choice
+
+
+# create the main tkinter instance
+mainframe = Tk()
+
+# create the canvas and put it at row 0, column 0
+canvas = Canvas(mainframe, width=500, height=500)
+canvas.grid(column=0, row=0)
+
+# starting point of the robot
+robot_point = (50, 50)
+# create a rectangle making the top left corner at x=50, y=50 and the bottom right corner at x=60, y=60
+robot = canvas.create_rectangle(robot_point[0], robot_point[1], robot_point[0] + 10, robot_point[1] + 10, fill="green", width="0")
+
+# array of random colours for use when the button is clicked
+colours = ["red", "orange", "yellow", "green", "blue", "violet"]
+# function that is called upon the user clicking the button
+def button_click():
+	# change the robots fill colour to a random colour from the array of colours
+	canvas.itemconfig(robot, fill=choice(colours))
+
+# create the button and position it at column 0, row 1
+button = Button(mainframe, text="Change Colour", command=button_click)
+button.grid(column=0, row=1)
+
+# the velocity of the robot (x, y), (+ve, +ve)
+velocity = [1, 1]
+
+# the target point
+target_point = (100, 300)
+angle = atan2(target_point[1] - robot_point[1], target_point[0] - robot_point[0])
+
+# now you have this angle its a matter of making the robot move in the direction of that angle
+# THIS ONE'S UP TO YOU 
+
+while 1:
+	# get the current coords of the robot
+	current_coords = canvas.coords(robot)
+
+	new_coords = (current_coords[0] + (1 * velocity[0]), current_coords[1] + (1 * velocity[1]), current_coords[2] + (1 * velocity[0]), current_coords[3] + (1 * velocity[1]))
+
+	# if the robot is out of the canvas then don't do anything and change the velocities accordingly
+	if new_coords[0] < 0: velocity[0] = 1; continue
+	if new_coords[1] < 0: velocity[1] = 1; continue
+	if new_coords[2] > 500: velocity[0] = -1; continue
+	if new_coords[3] > 500: velocity[1] = -1; continue
+
+	# move the robot to the new coords
+	canvas.coords(robot, new_coords)
+
+	# update the canvas so that the user is presented with the latest state of the canvas
+	canvas.update()
+	# wait 0.01 of a second until the robot moves again
+	sleep(0.01)
+
+# mainloop for tkinter. not really needed as this point is never reached due to the infinite while loop above
+mainloop()
