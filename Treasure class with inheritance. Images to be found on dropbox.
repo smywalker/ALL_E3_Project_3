@@ -1,0 +1,17 @@
+# Treasure template
+class item:
+    kind = 'treasure'
+    def _init(self, multiplier, picture):
+        # All treasure give a minimum of 100 points
+        self.defaultPoints = 100
+        # Multiplier gives score variety to different treasures
+        self.multiplier = multiplier
+        points = defaultPoints * multiplier
+        # This line gives different treasures their respective images (image files must be present)
+        self.gif = PhotoImage(file = picture)
+# Inheritance instances for the treasures
+coin = item(1, 'coin.gif')
+gold = item(2, 'gold.gif')
+ruby = item(3, 'ruby.gif')
+diamond = item(4, 'diamond.gif')
+egg = item(5, 'egg.gif')
