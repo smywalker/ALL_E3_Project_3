@@ -1,7 +1,7 @@
 # Treasure template
 class item:
     kind = 'treasure'
-    def _init(self, multiplier, picture):
+    def __init__(self, multiplier, picture):
         # All treasure give a minimum of 100 points
         self.defaultPoints = 100
         # Multiplier gives score variety to different treasures
