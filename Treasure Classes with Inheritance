@@ -1,0 +1,42 @@
+# Parent class featuring base amount of points and coordinates
+class placement:
+    def __init__(self, defaultPoints, x1, x2, y1, y2)
+        self.defaultPoints = 100
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x1 + 50
+        self.y2 = y1 + 50
+       
+# Treasure classes that inherit base points and coordnates
+class coin(placement):
+    def __init__(self, defaultPoints, multiplier, picture):
+        # Multiplier gives score variety to different treasures
+        self.multiplier = 1
+        points = defaultPoints * multiplier
+        # This line gives different treasures their respective images (image files must be present)
+        self.picture = PhotoImage(file = 'coin.gif')
+
+class gold(placement):
+    def __init__(self, defaultPoints, multiplier, picture):
+        self.multiplier = 2
+        points = defaultPoints * multiplier
+        self.picture = PhotoImage(file = 'gold.gif')
+
+class ruby(placement):
+    def __init__(self, defaultPoints, multiplier, picture):
+        self.multiplier = 3
+        points = defaultPoints * multiplier
+        self.picture = PhotoImage(file = 'ruby.gif')
+
+class diamond(placement):
+    def __init__(self, defaultPoints, multiplier, picture):
+        self.multiplier = 4
+        points = defaultPoints * multiplier
+        self.picture = PhotoImage(file = 'diamond.gif')
+
+class egg(placement):
+    def __init__(self, defaultPoints, multiplier, picture):
+        self.multiplier = 5
+        points = defaultPoints * multiplier
+        self.picture = PhotoImage(file = 'egg.gif')
+
