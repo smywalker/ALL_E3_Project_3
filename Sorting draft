@@ -1,0 +1,23 @@
+import operator
+
+def bubbleSort(itemList):
+    for passnum in range(len(alist)-1,0,-1):
+        for i in range(passnum):
+            if alist[i]>alist[i+1]:
+                temp = alist[i]
+                alist[i] = alist[i+1]
+                alist[i+1] = temp
+                
+scoreTreasure = attrgetter(points)
+aList = [scoreTreasure(coin), scoreTreasure(gold), scoreTreasure(ruby), scoreTreasure(diamond), scoreTreasure(egg)]
+class Foo(object):
+
+     def __init__(self, score):
+         self.score = score
+
+     def __lt__(self, other):
+         return self.score < other.score
+
+l = [Foo(3), Foo(1), Foo(2)]
+l.sort()
+sorted_aList = sorted(aList, key=operator.attrgetter('score'))
