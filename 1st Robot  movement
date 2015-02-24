@@ -1,0 +1,49 @@
+import Tkinter
+from Tkinter import *
+from math import *
+import time
+import random
+
+from Tkinter import*
+      
+window=Tk()
+canvas=Canvas(window, width=800, height=600, bg='white')
+canvas.pack(padx=5,pady=5)
+
+robo = (300, 400)
+x_coord = random.randint(100, 350)
+y_coord = random.randint(100, 400)
+tre = (x_coord, y_coord)
+
+#calculating opposite
+
+adjacent = tre[0] - robo[0]
+opposite = tre[1] - robo[1]
+
+#pythagoras theorem
+hypothenus = ((adjacent * adjacent) + (opposite * opposite))
+
+hyp = float(sqrt(hypothenus))
+OH = float(opposite/hyp)
+
+r_angle = float(asin(OH))
+
+angle = degrees(r_angle)
+
+x = adjacent/50
+y = opposite/50
+
+print angle
+
+velo = angle/10
+
+id1 = canvas.create_rectangle(robo[0], robo[1], robo[0] + 10, robo[1] + 10)
+id2 = canvas.create_rectangle(tre[0], tre[1], tre[0] + 10, tre[1] + 10)
+for t in range(80):
+    coords=canvas.coords(id1)
+    movt = canvas.coords(id1, coords[0] + x, coords[1] + y, coords[2] + x, coords[3] + y)
+    time.sleep(0.1)
+    canvas.update()
+window.mainloop()
+
+
