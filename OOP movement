@@ -1,0 +1,46 @@
+class createRobot:
+    def __init__ (self, x, y, size = 5, colour = 'brown'):
+        self.x = x
+        self.y = y
+        self.size = size
+        self.colour = colour
+    def drawRobot(self, canvas):
+        self.canvas = canvas
+        self.draw = create_oval(self.x, self.y, self.x + self.size, self.y + self.size, fill = self.colour)
+        self.robot = canvas.coords(draw)
+class createTreasure:
+    def __init__(self, t, r, image, anchor=NW):
+        self.t=t - 10
+        self.r=r - 10
+        self.image=image
+    def createImage(self, canvas):
+        self.canvas = canvas
+        self.image = PhotoImage(file=self.image)
+        self.treasure = canvas.create_image(self.t, self.r, image=self.image)
+        self.tre = canvas.coords(treasure)
+        
+class Movement(createRobot, createTreasure):
+    def __init__(self, a, o, hy, OH, vx, vy, r):
+        createRobot. __init__ (self, x, y , size = 5, colour = 'blue')
+        createTreasure. __init__ (self, t, r, image)
+        self.a = a
+        self.o = o
+        self.hy = hy
+        self.OH = OH
+        self.vx = vx
+        self.vy = vy
+        self.r = r
+    def find(self):
+        self.tre = canvas.coords(treasure)
+        self.robot = canvas.coords(draw)
+        self.a = self.tre[0] - robot[0]
+        self.o = self.tre[1] - robo[1]
+        self.hy = float(sqrt((self.a * self.a) + (self.o * self.o)))
+        self.OH = float(self.o / self.hy)
+        self.vx = self.a / 50.0
+        self.vy = self.o / 50.0
+        self.r = int(hy/5)
+        self.coords = canvas.coords(draw)
+        self.canvas.coords(self.robot, self.coords[0] + vx, self.coords[1] + vy, coords[2] + vx, coords[3] + vy)
+        self.time.sleep(0.7)
+        self.canvas.update()
