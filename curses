@@ -1,0 +1,11 @@
+# allow python to use text display on the screen
+import curses
+stdscr = curses.initscr()
+# lets text to be displayed conditionally
+curses.noecho()
+# lets text to appear without requiring 'Enter'
+curses.cbreak()
+# Set the text location coordinates
+LeftX = 90; TopY = 20
+height = 10; width = 50
+win = curses.newwin(height, width, TopY, LeftX)
