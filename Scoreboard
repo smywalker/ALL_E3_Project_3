@@ -12,5 +12,6 @@ def scoreboard(r, z, listing):
         listing[z] = r.create_text(90 + 50 * z, 20 + 50 * z, anchor = NW)
         z = z + 1
         scoreboard(r, z, listing)
+#aList = listing, w = r (the canvas), z = zero by default
 scoreboard(w, 0, aList)
 mainloop()
