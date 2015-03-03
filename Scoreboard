@@ -4,13 +4,13 @@ master = Tk()
 
 w = Canvas(master, width=800, height=640)
 w.pack()
-aList = [1, 7, 3, 8, 6, 2, 9]
-z = 0
-def scoreboard():
-    if z > len(aList):
+aList = [1, 7, 3, 8, 6, 2, 9] #Just as an example
+def scoreboard(r, z, listing):
+    if z >= len(listing):
         print "done"
     else:
-        aList[z] = create_text(90 + 50 * z, 20 + 50 * z, anchor = NW)
+        listing[z] = r.create_text(90 + 50 * z, 20 + 50 * z, anchor = NW)
         z = z + 1
-        scoreboard()
-scoreboard()
+        scoreboard(r, z, listing)
+scoreboard(w, 0, aList)
+mainloop()
