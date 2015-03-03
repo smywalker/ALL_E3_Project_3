@@ -1,0 +1,7 @@
+#ALL Robot Project
+import Tkinter as tk
+root = tk.Tk()
+# By adding True or false in the prentheses i am able to show the spash screen with or without the windows border. 
+root.overrideredirect(True)
+width = root.winfo_screenwidth()
+height = root.winfo_screenheight()
