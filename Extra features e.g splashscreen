@@ -5,3 +5,11 @@ root = tk.Tk()
 root.overrideredirect(True)
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
+#Size of Canvas
+root.geometry('%dx%d+%d+%d' % (width*0.5, height*0.5, width*0.1, height*0.1))
+#This is where we linked the image we want to show in the spash screen.
+image_file = "random_converted.gif"
+# Here is the path to find the file.
+image = tk.PhotoImage(file=image_file)
+#This is where we can edit the background spash screen.
+canvas = tk.Canvas(root, height=height*0.8, width=width*0.8, bg="white")
