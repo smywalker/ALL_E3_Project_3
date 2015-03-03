@@ -1,0 +1,63 @@
+from Tkinter import*
+import time
+import random
+
+class Treasure:
+    def __init__(self, t, r, image, anchor = NW):
+        self.t=t
+        self.r=r
+        self.image=image
+    def createImage(self, canvas):
+        self.canvas = canvas
+        self.image = PhotoImage(file=self.image)
+        self.treasure = canvas.create_image(self.t - 10, self.r - 10, image=self.image)
+class Robot(Treasure):
+    def __init__ (self, x, y, size = 5, colour = 'brown'):
+        Treasure.__init__ (self, t, r, image, anchor = NW)
+        self.x = x
+        self.y = y
+        self.size = size
+        self.colour = colour
+        self.a = a
+        self.o = o
+        self.hy = hy
+        self.OH = OH
+        self.vx = vx
+        self.vy = vy
+        self.r = r
+    def find(self):
+        self.coords = canvas.coords(self.robot)
+        self.a = self.t - self.x
+        self.o = self.r - self.y
+        self.hy = float(sqrt((self.a * self.a) + (self.o * self.o)))
+        self.OH = float(self.o / self.hy)
+        self.vx = self.a / 50.0
+        self.vy = self.o / 50.0
+        self.r = int(hy/5)
+        self.coords = canvas.coords(draw)
+        self.canvas.coords(self.robot, self.coords[0] + vx, self.coords[1] + vy, coords[2] + vx, coords[3] + vy)
+        self.time.sleep(0.7)
+        self.canvas.update()
+    def drawRobot(self, canvas):
+        self.canvas = canvas
+        self.robot = canvas.create_oval(self.x, self.y, self.x + self.size, self.y + self.size, fill = self.colour)
+        
+window = Tk()
+window.title("ALL PROJECT 3")
+canvas = Canvas(window, width = 700, height = 700, bg = 'white')
+canvas.pack(padx = 1, pady = 1)
+land = Treasure(100, 200, 'ruby.gif')
+land.createImage(canvas)
+
+robot = Robot(350, 300, size = 10)
+robot.drawRobot(canvas)
+
+
+x_coord = random.randint(0, 550)
+y_coord = random.randint(0, 600)
+
+
+for t in range(50):
+    robo.find()
+    time.sleep(0.3)
+window.mainloop()
