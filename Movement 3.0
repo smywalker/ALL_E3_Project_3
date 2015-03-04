@@ -1,0 +1,73 @@
+import time
+import random
+import math
+
+from Tkinter import*
+
+class Treasure:
+    global x_coord
+    global y_coord
+    
+    x_coord = random.randint(0, 550)
+    y_coord = random.randint(0, 600)
+    
+    t = x_coord
+    r = y_coord
+
+    def __init__(self, t, r, image, anchor = NW):
+        self.t = t
+        self.r = r
+        self.image=image
+    def createImage(self, canvas):
+        self.canvas = canvas
+        self.image = PhotoImage(file=self.image)
+        self.tresure = canvas.create_image(self.t, self.r, image=self.image)
+
+window = Tk()
+window.title("ALL PROJECT 3")
+canvas = Canvas(window, width = 700, height = 700, bg = 'white')
+canvas.pack(padx = 1, pady = 1)
+
+
+class Robot(Treasure):
+    def __init__ (self, x, y, size = 5, colour = 'brown'):
+        self.x = x
+        self.y = y
+        self.size = size
+        self.colour = colour
+        self.a = Treasure.t - self.x
+        self.o = Treasure.r - self.y
+        self.hy = float(math.sqrt((self.a * self.a) + (self.o * self.o)))
+        self.OH = 0
+        self.vx = self.a/55.0
+        self.vy = self.a/55.0
+        self.r = 50
+    def find(self):
+        self.a = Treasure.t - self.x
+        self.o = Treasure.r - self.y
+        self.hy = float(math.sqrt((self.a * self.a) + (self.o * self.o)))
+        self.OH = float(self.o / self.hy)
+        self.vx = self.a / 60.0
+        self.vy = self.o / 60.0
+        self.r = int(self.hy/5)
+        self.x += self.vx
+        self.y += self.vy
+        self.canvas.coords(self.robot, self.x, self.y, self.x + self.size, self.y + self.size)
+        self.canvas.update()
+    def drawRobot(self, canvas):
+        self.canvas = canvas
+        self.robot = canvas.create_oval(self.x, self.y, self.x + self.size, self.y + self.size, fill = self.colour)
+
+Ruby = Treasure(x_coord, y_coord, 'ruby.gif')
+Ruby.createImage(canvas)
+
+robot = Robot(100, 300, size = 10)
+robot.drawRobot(canvas)
+
+print robot.vx
+
+for t in range(500):
+    robot.find()
+    time.sleep(0.1)
+    
+window.mainloop()
