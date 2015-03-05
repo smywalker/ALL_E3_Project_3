@@ -7,6 +7,8 @@ time = raw_input("Enter time for the timer: ")
 time = int(float(time))
 def tick():
     
+    canvas.delete(ALL)
+    
     global time
     time -= 1
     
