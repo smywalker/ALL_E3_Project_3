@@ -15,7 +15,7 @@ class coin(placement):
         # Multiplier gives score variety to different treasures
         self.multiplier = 1
         points = defaultPoints * multiplier
-        TreasureDictionary['coin'] = 'a bunch of coins'} #this will include this treasure in the dictionary
+        TreasureDictionary['coin'] = {'a bunch of coins'} #this will include this treasure in the dictionary
         # This line gives different treasures their respective images (image files must be present)
         self.picture = PhotoImage(file = 'coin.gif')
         
@@ -24,28 +24,28 @@ class gold(placement):
     def __init__(self, defaultPoints, multiplier, picture):
         self.multiplier = 2
         points = defaultPoints * multiplier
-        TreasureDictionary['gold'] = 'a stack of gold bars'}
+        TreasureDictionary['gold'] = {'a stack of gold bars'}
         self.picture = PhotoImage(file = 'gold.gif')
 
 class ruby(placement):
     def __init__(self, defaultPoints, multiplier, picture):
         self.multiplier = 3
         points = defaultPoints * multiplier
-        TreasureDictionary['ruby'] = 'a shiny red gem'}
+        TreasureDictionary['ruby'] = {'a shiny red gem'}
         self.picture = PhotoImage(file = 'ruby.gif')
 
 class diamond(placement):
     def __init__(self, defaultPoints, multiplier, picture):
         self.multiplier = 4
         points = defaultPoints * multiplier
-        TreasureDictionary['diamond'] = 'a big diamond'}
+        TreasureDictionary['diamond'] = {'a big diamond'}
         self.picture = PhotoImage(file = 'diamond.gif')
 
 class egg(placement):
     def __init__(self, defaultPoints, multiplier, picture):
         self.multiplier = 5
         points = defaultPoints * multiplier
-        TreasureDictionary['egg'] = 'happy easter'}
+        TreasureDictionary['egg'] = {'happy easter'}
         self.picture = PhotoImage(file = 'egg.gif')
 
 
