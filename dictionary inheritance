@@ -2,7 +2,7 @@ TreasureDictionary = {} # empty dictionary to provide item descriptions
 
 # Parent class featuring base amount of points and coordinates
 class placement:
-    def __init__(self, defaultPoints, x1, x2, y1, y2)
+    def __init__(self, defaultPoints, x1, x2, y1, y2):
         self.defaultPoints = 100
         self.x1 = x1
         self.y1 = y1
