@@ -1,0 +1,13 @@
+from Tkinter import *
+import tkMessageBox
+import Tkinter
+
+
+window = Tkinter.Tk()
+
+def helloCallBack():
+   tkMessageBox.showinfo( "Hello Python", "Hello World")
+
+B = Button(window, text ="Hello", command = helloCallBack).place(x = 100, y = 120)
+
+window.mainloop()
