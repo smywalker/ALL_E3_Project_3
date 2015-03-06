@@ -49,7 +49,7 @@ class egg(placement):
         self.picture = PhotoImage(file = 'egg.gif')
 
 
-#to inlude the following:
+#to include the following:
 
 #TreasureDictionary['coin'] being printed above the robot when it interacts with the coin treasure
 #TreasureDictionary['gold'] being printed above the robot when it interacts with the gold treasure
