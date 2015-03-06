@@ -1,0 +1,15 @@
+from Tkinter import *
+import tkMessageBox
+import Tkinter
+import sys
+
+
+window = Tkinter.Tk()
+canvas = Canvas(window, width = 900, height = 900, bg = 'white')
+canvas.pack(padx = 50, pady = 2)
+def helloCallBack():
+   tkMessageBox.showinfo( "Hello Python", "Hello World")
+
+B = Button(window, text ="Ruby", command = helloCallBack).place( x= 840, y = 100)
+T = Button(window, text ="Gold", command = helloCallBack).place(x= 880, y = 100)
+window.mainloop()
