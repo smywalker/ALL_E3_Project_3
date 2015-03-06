@@ -2,13 +2,20 @@ import Tkinter as tk
 
 counter = 10 
 def counter_label(label):
-  counter = 0
+  counter = raw_input("Enter time for the timer: ")
+  counter = int(float(counter))
   def count():
     global counter
     counter -= 1
+
+    if counter ==-1:
+        root.destroy()
+    
+    
     label.config(text=str(counter))
     label.after(1000, count)
   count()
+
  
  
 root = tk.Tk()
