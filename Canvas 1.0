@@ -1,0 +1,89 @@
+from Tkinter import *
+import tkMessageBox
+import Tkinter
+import sys
+
+
+window = Tkinter.Tk()
+canvas = Canvas(window, width = 900, height = 900, bg = 'white')
+canvas.pack(padx = (0,300), pady = (0,0))
+photo = PhotoImage(file = "ruby.gif")
+
+Score_List = []
+
+def button1():
+   score1 = t1_score.get()
+   t1_score.delete(0,END)
+   Score_List.append(score1)
+   print Score_List
+   return
+def button2():
+   score2 = t2_score.get()
+   t2_score.delete(0,END)
+   Score_List.append(score2)
+   print Score_List
+   return
+def button3():
+   score3 = t3_score.get()
+   t3_score.delete(0,END)
+   Score_List.append(score3)
+   print Score_List
+   return
+def button4():
+   score4 = t4_score.get()
+   t4_score.delete(0,END)
+   Score_List.append(score4)
+   print Score_List
+   return
+def button5():
+   score5 = t5_score.get()
+   t5_score.delete(0,END)
+   Score_List.append(score5)
+   print Score_List
+   return
+
+#put the 0.0 as useability testing
+def helloCallBack():
+   global t1_score
+   #tkMessageBox.showinfo( "Hello Python", "Hello World")
+   t1_score = Entry(window)
+   t1_score.place(x = 910, y = 110, width = 50)
+   Button(window, text = "OK", command = button1).place(x = 1000, y = 110)
+   t1_score.insert(10, "0.0")
+def Treasure2():
+   global t2_score
+   t2_score = Entry(window)
+   t2_score.place(x = 910, y = 130, width = 50)
+   t2_score.insert(0, "0.0")
+   Button(window, text = "OK", command = button2).place(x = 1000, y = 130)
+def Treasure3():
+   global t3_score
+   t3_score = Entry(window)
+   t3_score.place(x = 910, y = 150, width = 50)
+   t3_score.insert(0, "0.0")
+   Button(window, text = "OK", command = button3).place(x = 1000, y = 150)
+def Treasure4():
+   global t4_score
+   t4_score = Entry(window)
+   t4_score.place(x = 910, y = 170, width = 50)
+   t4_score.insert(0, "0.0")
+   Button(window, text = "OK", command = button4).place(x = 1000, y = 170)
+def Treasure5():
+   global t5_score
+   t5_score = Entry(window)
+   t5_score.place(x = 910, y = 190, width = 50)
+   t5_score.insert(0, "0.0")
+   Button(window, text = "OK", command = button5).place(x = 1000, y = 190)
+
+Select_Treasure = Label(window, text = "SELECT YOUR TREASURE").place(x = 990, y = 27)
+T1 = Button(window, text ="Ruby", image = photo, command = helloCallBack).place( x= 910, y = 50)
+T2 = Button(window, text ="Gold", image = photo, command = Treasure2).place(x= 970, y = 50)
+T3 = Button(window, text ="Diamond", image = photo, command = Treasure3).place(x = 1030, y = 50)
+T4 = Button(window, text ="Coins", image = photo, command = Treasure4).place(x = 1090, y = 50)
+T5 = Button(window, text ="Eggs", image = photo, command = Treasure5).place(x = 1150, y = 50)
+convert = int()
+
+x = Entry(window, textvariable = convert, text = "x coord").place(x = 930, y = 200, width = 50)
+text = Label(window, text = "input").place(x = 730, y = 200)
+
+window.mainloop()
