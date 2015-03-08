@@ -1,0 +1,246 @@
+from Tkinter import*
+import Tkinter
+import tkMessageBox
+import sys
+import time
+import random
+import math
+
+class Object:
+    t = 60
+    r = 100
+    
+
+window = Tkinter.Tk()
+canvas = Canvas(window, width = 900, height = 750, bg = 'white')
+canvas.pack(padx = (0,300), pady = (0,0))
+
+photo = PhotoImage(file = "ruby.gif")
+photo2 = PhotoImage(file = "ruby.gif")
+photo3 = PhotoImage(file = "ruby.gif")
+photo4 = PhotoImage(file = "ruby.gif")
+photo5 = PhotoImage(file = "ruby.gif")
+
+Score_List = []
+treasure_array = []
+
+def button1():
+   score1 = t1_score.get()
+   t1_score.delete(0,END)
+   Score_List.append(score1)
+   print Score_List
+   return
+def button2():
+   score2 = t2_score.get()
+   t2_score.delete(0,END)
+   Score_List.append(score2)
+   print Score_List
+   return
+def button3():
+   score3 = t3_score.get()
+   t3_score.delete(0,END)
+   Score_List.append(score3)
+   print Score_List
+   return
+def button4():
+   score4 = t4_score.get()
+   t4_score.delete(0,END)
+   Score_List.append(score4)
+   print Score_List
+   return
+def button5():
+   score5 = t5_score.get()
+   t5_score.delete(0,END)
+   Score_List.append(score5)
+   print Score_List
+   return
+
+def Submit_button():
+    robot_x = input_x.get()
+    robot_x = int(float(robot_x))
+    robot_y = input_y.get()
+    robot_y = int(float(robot_y))
+    global robot
+    robot = Robot(robot_x, robot_y, size = 10)
+    robot.drawRobot(canvas)
+#put the 0.0 as useability testing
+def place_Treasure1():
+    global t1_score
+    global Ruby
+    Ruby = Treasure('ruby.gif', random.randint(20, 870), random.randint(10, 850))
+    Ruby.createImage(canvas)
+    t1_score = Entry(window)
+    t1_score.place(x = 1020, y = 110, width = 50)
+    Button(window, text = "OK", command = button1).place(x = 1110, y = 110, height = 20)
+    wish = Button(window, text = "FIND", command = find_Ruby).place(x = 1150, y = 110, height = 20)
+    Label(window, text = "Points for Ruby:").place(x =905, y= 110)
+    t1_score.insert(10, "0.0")
+def find_Ruby():
+    treasure_array.append(Ruby)
+def place_Treasure2():
+    global t2_score
+    global Gold
+    Gold = Treasure('ruby.gif', random.randint(20, 870), random.randint(10, 850))
+    Gold.createImage(canvas)
+    t2_score = Entry(window)
+    t2_score.place(x = 1020, y = 130, width = 50)
+    t2_score.insert(0, "0.0")
+    Button(window, text = "OK", command = button2).place(x = 1110, y = 130, height = 20)
+    wish = Button(window, text = "FIND", command = find_Gold).place(x = 1150, y = 130, height = 20)
+    Label(window, text = "Points for Gold:").place(x =905, y= 130)
+def find_Gold():
+    treasure_array.append(Gold)
+def place_Treasure3():
+    global Diamond
+    Diamond = Treasure('ruby.gif', random.randint(20, 870), random.randint(10, 850))
+    Diamond.createImage(canvas)
+    global t3_score
+    t3_score = Entry(window)
+    t3_score.place(x = 1020, y = 150, width = 50)
+    t3_score.insert(0, "0.0")
+    Button(window, text = "OK", command = button3).place(x = 1110, y = 150, height = 20)
+    wish = Button(window, text = "FIND", command = find_Diamond).place(x = 1150, y = 150, height = 20)
+    Label(window, text = "Points for Diamond:").place(x =905, y= 150)
+def find_Diamond():
+    treasure_array.append(Diamond)
+def place_Treasure4():
+    global t4_score
+    global Coins
+    Coins = Treasure('ruby.gif', random.randint(20, 870), random.randint(10, 850))
+    Coins.createImage(canvas)
+    t4_score = Entry(window)
+    t4_score.place(x = 1020, y = 170, width = 50)
+    t4_score.insert(0, "0.0")
+    Button(window, text = "OK", command = button4).place(x = 1110, y = 170, height = 20)
+    wish = Button(window, text = "FIND", command = find_Coins).place(x = 1150, y = 170, height = 20)
+    Label(window, text = "Points for Coins:").place(x =905, y= 170)
+def find_Coins():
+    treasure_array.append(Coins)
+def place_Treasure5():
+    global Egg
+    Egg = Treasure('ruby.gif', random.randint(20, 870), random.randint(10, 850))
+    Egg.createImage(canvas)
+    global t5_score
+    t5_score = Entry(window)
+    t5_score.place(x = 1020, y = 190, width = 50)
+    t5_score.insert(0, "0.0")
+    Button(window, text = "OK", command = button5).place(x = 1110, y = 190, height = 20)
+    wish = Button(window, text = "FIND", command = find_Egg).place(x = 1150, y = 190, height = 20)
+    Label(window, text = "Points for Egg:").place(x =905, y= 190)
+def find_Egg():
+    treasure_array.append(Egg)
+
+get_time = Entry(window)
+get_time.place(x = 1100, y = 500, width = 50)
+
+def Input_Time():
+    global timer_secs
+    timer_secs = get_time.get()
+    timer_secs = int(float(timer_secs))
+    
+def Timer():
+    global timer_secs
+    timer_secs -= 1
+    Label(window, text = timer_secs).place(x = 100, y = 0)
+    if time == -1:
+        canvas.delete(ALL)
+    else:
+        canvas.after(1000, Timer)
+        
+Select_Treasure = Label(window, text = "SELECT YOUR TREASURE").place(x = 990, y = 7)
+
+Select_Treasure2 = Label(window, text = "(Click on the icon)").place(x = 1007, y = 27)
+
+
+T1 = Button(window, text ="Ruby", image = photo, command = place_Treasure1).place( x= 910, y = 50)
+T2 = Button(window, text ="Gold", image = photo2, command = place_Treasure2).place(x= 970, y = 50)
+T3 = Button(window, text ="Diamond", image = photo3, command = place_Treasure3).place(x = 1030, y = 50)
+T4 = Button(window, text ="Coins", image = photo4, command = place_Treasure4).place(x = 1090, y = 50)
+T5 = Button(window, text ="Eggs", image = photo5, command = place_Treasure5).place(x = 1150, y = 50)
+Time_Button = Button(window, text ="Time in seconds", command = Input_Time).place(x = 950, y = 500)
+
+input_x = Entry(window, text = "x coord")
+input_x.place(x = 1005, y = 295, width = 50, height = 20)
+input_y = Entry(window, text = "y coord")
+input_y.place(x = 1005, y = 320, width = 50, height = 20)
+Button(window, text = "Submit:", command = Submit_button).place(x = 910, y = 350, height = 20)
+Text_x = Label(window, text = "Coords for x:").place(x = 910, y = 295)
+Text_y = Label(window, text = "Coords for y:").place(x = 910, y = 320)
+text = Label(window, text = "Coordinates for the Robot:").place(x = 910, y = 270)
+
+class Treasure(Object):
+    def __init__(self, image, x, y, anchor = NW):
+        self.image = image
+        self.x, self.y = x, y
+    def createImage(self, canvas):
+        self.canvas = canvas
+        self.image = PhotoImage(file=self.image)
+        self.treasure = canvas.create_image(self.x, self.y, image=self.image)
+
+class Robot(Object):
+    def __init__ (self, x, y, size = 5, colour = 'brown'):
+        self.x = x
+        self.y = y
+        self.size = size
+        self.colour = colour
+        self.velocity = [1, 1]
+        self.assigned_treasure = None
+        self.speed = [5, 5]
+    def update(self, treasures):
+        if self.assigned_treasure is None:
+            pass # no treasure assigned
+            treasure = treasures[random.randint(0, len(treasures) - 1)]
+            self.assigned_treasure = treasure
+
+            if treasure.x > self.x:
+                self.velocity[0] = 1
+            elif treasure.x < self.x:
+                self.velocity[0] = -1
+            else:
+                self.velocity[0] = 0
+
+            if treasure.y > self.y:
+                self.velocity[1] = 1
+            elif treasure.y < self.y:
+                self.velocity[1] = -1
+            else:
+                self.velocity[1] = 0
+        else:
+            # treasure assigned, carry on
+            pass
+            self.x += self.speed[0] * self.velocity[0]
+            self.y += self.speed[1] * self.velocity[1]
+            xdone, ydone = False, False
+            if ((self.x > self.assigned_treasure.x and self.velocity[0] == 1)
+                or (self.x < self.assigned_treasure.x and self.velocity[0] == -1)
+                or (self.x == self.assigned_treasure.x)):
+
+                self.x = self.assigned_treasure.x
+                xdone = True
+            if ((self.y > self.assigned_treasure.y and self.velocity[1] == 1)
+                or (self.y < self.assigned_treasure.y and self.velocity[1] == -1)
+                or (self.y == self.assigned_treasure.y)):
+                self.y = self.assigned_treasure.y
+                ydone = True
+            if xdone and ydone:
+                # at the treasure
+                self.assigned_treasure = None
+            self.canvas.coords(self.robot, self.x, self.y, self.x + self.size, self.y + self.size)
+            
+    def drawRobot(self, canvas):
+        self.canvas = canvas
+        self.robot = canvas.create_oval(self.x, self.y, self.x + self.size, self.y + self.size, fill = self.colour)
+def run_robot():
+    robot.update(treasure_array)
+    time.sleep(0.1)
+    canvas.update()
+    
+
+# infinite while loop for robot movement
+def starter():
+    while 1:
+        run_robot()
+start_button = Button(window, text = "START", command = starter)
+start_button.place(x = 950, y = 600, width = 200, height = 100)
+canvas.update()
+window.mainloop()
