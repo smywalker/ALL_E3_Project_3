@@ -1,0 +1,20 @@
+import random
+
+
+my_list =[]
+for i in range(40):
+    my_list.append(random.randrange(0,2))
+
+list2=[]
+if i > 0:
+    i = 1
+
+else:
+    if i < 1:
+        i + 1
+        
+        
+    
+
+print (my_list)
+print (list2)
