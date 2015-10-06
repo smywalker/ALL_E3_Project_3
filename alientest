@@ -1,0 +1,12 @@
+aliendstart=1
+hatch=5
+lay=3
+d=1
+alien[30]
+
+alien[1]=alienstart
+
+for d in range 30:
+    alien[d]=alien[d-1]+alien[d-hatch]*lay
+    print(alien["day=",d,"aliens=",alien[d],"egg=", (alien[d-1]+alien[d]-alien[d-hatch])*lay)
+          
