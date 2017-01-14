@@ -1,0 +1,68 @@
+
+import Tkinter
+from Tkinter import *
+from math import *
+import time
+import random
+
+from Tkinter import*
+      
+window=Tk()
+canvas=Canvas(window, width=800, height=600, bg='white')
+canvas.pack(padx=5,pady=5)
+
+robo = (350, 300)
+x_coord = random.randint(0, 550)
+y_coord = random.randint(0, 600)
+tre = (x_coord, y_coord)
+
+#calculating opposite
+
+adjacent = tre[0] - robo[0]
+opposite = tre[1] - robo[1]
+
+#pythagoras theorem
+hypothenus = ((adjacent * adjacent) + (opposite * opposite))
+
+hyp = float(sqrt(hypothenus))
+OH = float(opposite/hyp)
+
+r_angle = float(asin(OH))
+
+angle = degrees(r_angle)
+
+x = adjacent/50
+y = opposite/50
+z = int(hyp/2)
+
+print angle
+
+
+id1 = canvas.create_oval(robo[0], robo[1], robo[0] + 10, robo[1] + 10)
+id2 = canvas.create_oval(tre[0], tre[1], tre[0] + 10, tre[1] + 10, fill = "brown")
+id3 = canvas.create_oval(tre[0] - 20, tre[1] - 20, tre[0] + 30, tre[1] + 30)
+for t in range(z):
+    coords=canvas.coords(id1)
+    Obx1, Oby1, Obx2, Oby2 = canvas.coords(id2)
+    
+    if coords[2]>(Obx1 - 30) and coords[2]<(Obx1+30) and coords[1]< Oby1 and coords[3]>Oby2:
+        print "1 Object detected left side"
+        time.sleep(40)
+
+    if coords[0]<(Obx2 + 20) and coords[0]>(Obx2 - 30) and coords[1]< Oby1 and coords[3]>Oby2:
+        print "1 Object detected right side"
+        time.sleep(40)
+
+    if coords[1]>(Oby1 - 30) and coords[1]<(Oby1+30) and coords[0]>Obx1 and coords[0]<Obx2:
+        print "1 Object detected bottom of object"
+        time.sleep(40)
+        
+    if coords[1]>(Oby2 - 30) and coords[1]<(Oby2+30) and coords[0]>Obx1 and coords[0]<Obx2:
+        print "1 Object detected top of object"
+        time.sleep(40)
+    movt = canvas.coords(id1, coords[0] + x, coords[1] + y, coords[2] + x, coords[3] + y)
+    time.sleep(0.07)
+    canvas.update()
+window.mainloop()
+
+
